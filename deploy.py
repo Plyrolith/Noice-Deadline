@@ -17,7 +17,7 @@ def copy_plugins_folder():
 
 
 def copy_submission_folder():
-    submission_src = os.path.join(script_directory(), "src", "submission")
+    submission_src = os.path.join(script_directory(), "src", "scripts", "Submission")
     submission_dst = os.path.join(repository_root(), "custom", "scripts", "Submission")
     copy_directory(submission_src, submission_dst)
 

@@ -1,12 +1,11 @@
 from DeadlineUI.Controls.Scripting.DeadlineScriptDialog import DeadlineScriptDialog
-from Deadline.Scripting import *
+from Deadline.Scripting import ClientUtils, FileUtils, PathUtils, RepositoryUtils, FrameUtils
 import os
 import re
 
-from System import *
-from System.Collections.Specialized import *
-from System.IO import *
-from System.Text import *
+from System.Collections.Specialized import StringCollection
+from System.IO import StreamWriter
+from System.Text import Encoding
 
 
 dialog = None

@@ -1,5 +1,5 @@
-from Deadline.Plugins import *
-from System.Diagnostics import *
+from Deadline.Plugins import DeadlinePlugin, PluginType
+from System.Diagnostics import ProcessPriorityClass
 import re
 import os.path
 
@@ -23,7 +23,7 @@ class NoicePlugin (DeadlinePlugin):
         self.RenderExecutableCallback += self.render_executable
         self.RenderArgumentCallback += self.render_argument
 
-    def cleanup():
+    def cleanup(self):
         for handler in self.StdoutHandlers:
             del handler.HandleCallback
 

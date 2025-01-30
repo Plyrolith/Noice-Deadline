@@ -79,7 +79,7 @@ class NoicePlugin (DeadlinePlugin):
 
     def path_for_frame(self, path, frame):
         directory, filename = os.path.split(path)
-        match = re.match(r'(.*\.)([#\d]+)(\.exr)', filename)
+        match = re.match(r'(.*?)([#\d]+)(\.exr)', filename)
         filename = self.filename_for_frame(match, frame) if match else filename
         return os.path.join(directory, filename)
 

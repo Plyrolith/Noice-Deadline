@@ -107,7 +107,7 @@ def autofill_from_input_pattern():
 # Rudimentary, just uses the smallest and greatest frame numbers that match the pattern
 def populate_frame_list():
     directory, file = os.path.split(dialog.GetValue("InputPattern"))
-    pattern = re.compile(r".*\.(\d+)\.exr")
+    pattern = re.compile(r".*?(\d+)\.exr")
     matches = [pattern.match(item) for item in os.listdir(directory)]
     frames = [int(match.group(1)) for match in matches if match is not None]
     if len(frames) > 1:
@@ -119,10 +119,10 @@ def populate_frame_list():
 
 def populate_output_path():
     input_pattern = dialog.GetValue("InputPattern")
-    pattern = re.compile(r"(.*\d+)\.exr")
+    pattern = re.compile(r"(.*?)(\d+)\.exr")
     match = pattern.match(input_pattern)
-    if match is not None:
-        output_pattern = "{0}_denoised.exr".format(match.group(1))
+    if match is not None and len(match.groups()) > 1:
+        output_pattern = "{0}denoised_{1}.exr".format(match.group(1), match.group(2))
         dialog.SetValue("OutputPattern", output_pattern)
 
 

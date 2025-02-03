@@ -1,7 +1,9 @@
 from Deadline.Plugins import DeadlinePlugin, PluginType
 from System.Diagnostics import ProcessPriorityClass
+
 import re
-import os.path
+import os
+import sys
 
 
 def __main__(*args):
@@ -19,6 +21,8 @@ def CleanupDeadlinePlugin(plugin):
 
 class NoicePlugin (DeadlinePlugin):
     def __init__(self):
+        if sys.version_info.major == 3:
+            super().__init__()
         self.InitializeProcessCallback += self.initialize_process
         self.RenderExecutableCallback += self.render_executable
         self.RenderArgumentCallback += self.render_argument
